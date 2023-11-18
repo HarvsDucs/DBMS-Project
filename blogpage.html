@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Blog</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Blog</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- Add Post Section -->
+        <section>
+            <button onclick="location.href='add_post.php';">Add New Post</button>
+        </section>
+
+        <!-- Blog Posts -->
+        <section class="post">
+            <h2>Post Title One</h2>
+            <p>Posted on January 1, 2023 by Author</p>
+            <article>
+                <p>This is the summary of the first post. It's a welcoming post to the blog.</p>
+                <button onclick="location.href='edit_post.php';">Edit Post</button>
+                <button onclick="location.href='delete_post.php';">Delete Post</button>
+                <a href="#">Read more...</a>
+            </article>
+        </section>
+
+        <section class="post">
+            <h2>Post Title Two</h2>
+            <p>Posted on January 2, 2023 by Author</p>
+            <article>
+                <p>This is the summary of the second post. It goes into more details about the topics that will be covered in the blog.</p>
+                <button onclick="location.href='edit_post.php';">Edit Post</button>
+                <button onclick="location.href='delete_post.php';">Delete Post</button>
+                <a href="#">Read more...</a>
+            </article>
+        </section>
+
+        <!-- Additional posts... -->
+    </main>
+    <footer>
+        <p>© 2023 Simple Blog. All rights reserved.</p>
+    </footer>
+</body>
+</html>
