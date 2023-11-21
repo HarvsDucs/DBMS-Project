@@ -44,7 +44,7 @@ if ($stmt->num_rows > 0) {
         $_SESSION['username'] = $username;
         
         // Redirect to blog page
-        header('Location: blogpage.html');
+        header('Location: blogpage.php');
         exit(); // Always include exit() after a header redirect
     } else {
         // Password is not correct
