@@ -1,17 +1,42 @@
 <?php
 include 'db_connect.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id = $_POST['id'];
+// Check if the 'id' parameter exists in the POST request
+if (isset($_POST['id'])) {
+    // Sanitize and validate the 'id' value
+    $id = intval($_POST['id']);
 
-    $sql = "DELETE FROM posts WHERE id=$id";
+    // Prepare a DELETE SQL statement to delete the record with the given ID
+    $sql = "DELETE FROM posts WHERE id = ?";
 
-    if ($conn->query($sql) === TRUE) {
-        echo "Record deleted successfully";
+    // Use a prepared statement to avoid SQL injection
+    $stmt = $conn->prepare($sql);
+    
+    if ($stmt) {
+        // Bind the ID parameter to the statement
+        $stmt->bind_param("i", $id);
+
+        // Execute the DELETE statement
+        if ($stmt->execute()) {
+            // Record successfully deleted
+            echo 'Record with ID ' . $id . ' has been deleted.';
+            header('Location: blogpage.php');
+        } else {
+            // Error occurred while deleting
+            echo 'Error: Unable to delete record.';
+        }
+        
+        // Close the prepared statement
+        $stmt->close();
     } else {
-        echo "Error deleting record: " . $conn->error;
+        // Error preparing the statement
+        echo 'Error: Unable to prepare statement.';
     }
-
-    $conn->close();
+} else {
+    // 'id' parameter is missing in the POST request
+    echo 'Error: No ID specified for deletion.';
 }
+
+// Close the database connection
+$conn->close();
 ?>
